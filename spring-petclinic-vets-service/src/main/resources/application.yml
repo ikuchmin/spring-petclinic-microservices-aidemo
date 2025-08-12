@@ -2,12 +2,18 @@ spring:
   application:
     name: vets-service
   config:
-    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888/}
+    import: "optional:configserver:"
   cache:
     cache-names: vets
   profiles:
     active: production
   cloud:
+    config:
+      enabled: false
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: config-server
     consul:
       enabled: false
       discovery:

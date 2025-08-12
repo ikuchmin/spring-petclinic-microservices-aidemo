@@ -6,7 +6,19 @@ spring:
   profiles:
     active: production
   config:
-    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888/},optional:classpath:/creds.yaml
+    import: "optional:configserver:",optional:classpath:/creds.yaml
+  cloud:
+    config:
+      enabled: false
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: config-server
+    consul:
+      enabled: false
+      discovery:
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}:${random.uuid}
   ai:
     chat:
       client:
@@ -27,12 +39,6 @@ spring:
         options:
             temperature: 0.7
             model: gpt-4o-mini
-  cloud:
-    consul:
-      enabled: false
-      discovery:
-        service-name: ${spring.application.name}
-        instance-id: ${spring.application.name}:${random.uuid}
 
 logging:
   level:
