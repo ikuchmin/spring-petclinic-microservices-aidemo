@@ -24,6 +24,15 @@ spring:
 spring:
   config:
     activate:
+      on-profile: cloudconfig
+  cloud:
+    config:
+      enabled: true
+
+---
+spring:
+  config:
+    activate:
       on-profile: docker
     import: configserver:http://config-server:8888
 

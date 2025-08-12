@@ -58,6 +58,15 @@ spring:
 spring:
   config:
     activate:
+      on-profile: cloudconfig
+  cloud:
+    config:
+      enabled: true
+
+---
+spring:
+  config:
+    activate:
       on-profile: discovery
   cloud:
     consul:
