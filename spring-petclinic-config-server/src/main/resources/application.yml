@@ -1,5 +1,7 @@
 server.port: 8888
 spring:
+  application:
+    name: config-server
   cloud:
     config:
       server:
@@ -9,4 +11,18 @@ spring:
         # Use the File System Backend to avoid git pulling. Enable "native" profile in the Config Server.
         native:
           searchLocations: file:///${GIT_REPO}
+    consul:
+      enabled: false
+      discovery:
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}:${random.uuid}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: discovery
+  cloud:
+    consul:
+      enabled: true
 
