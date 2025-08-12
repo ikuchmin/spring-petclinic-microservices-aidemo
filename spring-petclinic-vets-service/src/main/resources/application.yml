@@ -9,13 +9,12 @@ spring:
     active: production
   cloud:
     consul:
+      enabled: false
       host: ${CONSUL_HOST:localhost}
       port: ${CONSUL_PORT:8500}
       discovery:
-        prefer-ip-address: true
         service-name: ${spring.application.name}
-        health-check-path: /actuator/health
-        instance-id: ${spring.application.name}:${random.value}
+        instance-id: ${spring.application.name}:${random.uuid}
 
 ---
 spring:
@@ -23,12 +22,15 @@ spring:
     activate:
       on-profile: docker
     import: configserver:http://config-server:8888
+
+---
+spring:
+  config:
+    activate:
+      on-profile: discovery
   cloud:
     consul:
-      host: consul
-      port: 8500
-      discovery:
-        prefer-ip-address: true
-        service-name: ${spring.application.name}
-        health-check-path: /actuator/health
-        instance-id: ${spring.application.name}:${random.value}
+      enabled: true
+
+
+

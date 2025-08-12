@@ -5,13 +5,21 @@ spring:
     import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888/}
   cloud:
     consul:
+      enabled: false
       host: ${CONSUL_HOST:localhost}
       port: ${CONSUL_PORT:8500}
       discovery:
-        prefer-ip-address: true
         service-name: ${spring.application.name}
-        health-check-path: /actuator/health
-        instance-id: ${spring.application.name}:${random.value}
+        instance-id: ${spring.application.name}:${random.uuid}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: discovery
+  cloud:
+    consul:
+      enabled: true
 
 ---
 spring:
@@ -19,12 +27,3 @@ spring:
     activate:
       on-profile: docker
     import: configserver:http://config-server:8888
-  cloud:
-    consul:
-      host: consul
-      port: 8500
-      discovery:
-        prefer-ip-address: true
-        service-name: ${spring.application.name}
-        health-check-path: /actuator/health
-        instance-id: ${spring.application.name}:${random.value}
