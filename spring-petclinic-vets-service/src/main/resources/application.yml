@@ -7,6 +7,15 @@ spring:
     cache-names: vets
   profiles:
     active: production
+  cloud:
+    consul:
+      host: ${CONSUL_HOST:localhost}
+      port: ${CONSUL_PORT:8500}
+      discovery:
+        prefer-ip-address: true
+        service-name: ${spring.application.name}
+        health-check-path: /actuator/health
+        instance-id: ${spring.application.name}:${random.value}
 
 ---
 spring:
@@ -14,3 +23,12 @@ spring:
     activate:
       on-profile: docker
     import: configserver:http://config-server:8888
+  cloud:
+    consul:
+      host: consul
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        service-name: ${spring.application.name}
+        health-check-path: /actuator/health
+        instance-id: ${spring.application.name}:${random.value}

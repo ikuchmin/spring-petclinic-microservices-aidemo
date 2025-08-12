@@ -10,9 +10,9 @@ spring:
     hibernate:
       ddl-auto: none
 
-eureka:
-  client:
-    enabled: false
+# Disable Consul discovery in tests
+spring.cloud.consul.enabled: false
+spring.cloud.discovery.enabled: false
 
 logging.level.org.springframework: INFO
 

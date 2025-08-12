@@ -1,2 +1,4 @@
 spring.cloud.config.enabled: false
-eureka.client.enabled: false
+# Disable Consul discovery in tests
+spring.cloud.consul.enabled: false
+spring.cloud.discovery.enabled: false

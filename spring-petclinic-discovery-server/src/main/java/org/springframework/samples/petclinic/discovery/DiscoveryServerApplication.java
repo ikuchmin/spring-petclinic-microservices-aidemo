@@ -17,13 +17,11 @@ package org.springframework.samples.petclinic.discovery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
- * @author Maciej Szarlinski
+ * Deprecated: Eureka server removed in favor of Consul.
  */
 @SpringBootApplication
-@EnableEurekaServer
 public class DiscoveryServerApplication {
 
 	public static void main(String[] args) {
