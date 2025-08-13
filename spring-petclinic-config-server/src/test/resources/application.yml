@@ -4,3 +4,8 @@ spring:
       server:
         git:
           uri: https://github.com/spring-petclinic/spring-petclinic-microservices-config
+    consul:
+      enabled: false
+      discovery:
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}:${random.uuid}

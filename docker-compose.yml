@@ -40,7 +40,7 @@ services:
     image: springcommunity/spring-petclinic-customers-service
     container_name: customers-service
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery
+      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
       - SPRING_CLOUD_CONSUL_HOST=consul
     deploy:
       resources:
@@ -58,7 +58,7 @@ services:
     image: springcommunity/spring-petclinic-visits-service
     container_name: visits-service
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery
+      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
       - SPRING_CLOUD_CONSUL_HOST=consul
     deploy:
       resources:
@@ -76,7 +76,7 @@ services:
     image: springcommunity/spring-petclinic-vets-service
     container_name: vets-service
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery
+      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
       - SPRING_CLOUD_CONSUL_HOST=consul
     deploy:
       resources:
@@ -95,7 +95,7 @@ services:
     image: springcommunity/spring-petclinic-genai-service
     container_name: genai-service
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery
+      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
       - SPRING_CLOUD_CONSUL_HOST=consul
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - AZURE_OPENAI_KEY=${AZURE_OPENAI_KEY}
@@ -117,7 +117,7 @@ services:
     image: springcommunity/spring-petclinic-api-gateway
     container_name: api-gateway
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery
+      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
       - SPRING_CLOUD_CONSUL_HOST=consul
     deploy:
       resources:
@@ -145,7 +145,7 @@ services:
     image: springcommunity/spring-petclinic-admin-server
     container_name: admin-server
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery
+      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
       - SPRING_CLOUD_CONSUL_HOST=consul
     deploy:
       resources:
