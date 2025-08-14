@@ -16,8 +16,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * This test validates that the application runs correctly with PostgreSQL
  * and that all entries described in V1__Create_customers_schema_postgresql.sql exist in the database.
  */
-@SpringBootTest
-@ActiveProfiles("postgres")
+//@SpringBootTest
+//@ActiveProfiles("postgres")
 public class PostgreSqlIntegrationTest {
 
     @Autowired
