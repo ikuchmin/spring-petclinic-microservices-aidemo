@@ -40,7 +40,7 @@ services:
     image: springcommunity/spring-petclinic-customers-service
     container_name: customers-service
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
+      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig,postgres
       - SPRING_CLOUD_CONSUL_HOST=consul
     deploy:
       resources:
@@ -58,7 +58,7 @@ services:
     image: springcommunity/spring-petclinic-visits-service
     container_name: visits-service
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
+      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig,postgres
       - SPRING_CLOUD_CONSUL_HOST=consul
     deploy:
       resources:
@@ -76,7 +76,7 @@ services:
     image: springcommunity/spring-petclinic-vets-service
     container_name: vets-service
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
+      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig,postgres
       - SPRING_CLOUD_CONSUL_HOST=consul
     deploy:
       resources:
@@ -159,6 +159,27 @@ services:
     ports:
      - 9092:9090
 
+  ## Database
+
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=petclinic
+      - POSTGRES_USER=petclinic
+      - POSTGRES_PASSWORD=petclinic
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U petclinic -d petclinic"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 5432:5432
+
   ## Grafana / Prometheus
 
   grafana-server:
@@ -178,5 +199,8 @@ services:
       resources:
         limits:
           memory: 256M
+
+volumes:
+  postgres-2_data:
 #    ports:
 #    - 9091:9090

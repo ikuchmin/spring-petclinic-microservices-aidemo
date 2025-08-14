@@ -3,6 +3,14 @@ spring:
     name: customers-service
   config:
     import: "optional:configserver:"
+  flyway:
+    enabled: true
+    locations: classpath:db/migration/schema,classpath:db/migration/data
+    baseline-on-migrate: true
+    baseline-version: 0
+  jpa:
+    hibernate:
+      ddl-auto: validate
   cloud:
     config:
       enabled: false
@@ -33,4 +41,47 @@ spring:
   cloud:
     config:
       enabled: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/petclinic
+    username: petclinic
+    password: petclinic
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+---
+spring:
+  config:
+    activate:
+      on-profile: mysql
+  datasource:
+    url: jdbc:mysql://localhost:3306/petclinic?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: petclinic
+    password: petclinic
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+---
+spring:
+  config:
+    activate:
+      on-profile: hsql
+  datasource:
+    url: jdbc:hsqldb:mem:petclinic
+    username: sa
+    password:
+    driver-class-name: org.hsqldb.jdbcDriver
+  jpa:
+    database-platform: org.hibernate.dialect.HSQLDialect
+  sql:
+    init:
+      schema-locations: classpath*:db/hsqldb/schema.sql
+      data-locations: classpath*:db/hsqldb/data.sql
 
