@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AmplicodeDatabaseMigrationSettings" lastIdType="Integer" lastGeneratedStrategy="IDENTITY" />
   <component name="AmplicodePersistenceUnitSettings">
     <persistence-units>
       <persistence-unit moduleName="spring-petclinic-customers-service" name="Default">

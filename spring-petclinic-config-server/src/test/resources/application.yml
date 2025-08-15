@@ -3,7 +3,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/spring-petclinic/spring-petclinic-microservices-config
+          uri: https://gitflic.ru/project/ikuchmin/spring-petclinic-microservices-config.git
+          default-label: aidemo
     consul:
       enabled: false
       discovery:
