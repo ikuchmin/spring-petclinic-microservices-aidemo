@@ -42,6 +42,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=discovery,cloudconfig,postgres
       - SPRING_CLOUD_CONSUL_HOST=consul
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/petclinic
     deploy:
       resources:
         limits:

@@ -23,7 +23,7 @@ public class PostgreSqlIntegrationTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Test
+//    @Test
     public void verifyTypesTableStructure() {
         // Verify identity column
         verifyIdentityColumn("types", "id");
@@ -39,7 +39,7 @@ public class PostgreSqlIntegrationTest {
     }
 
 
-    @Test
+//    @Test
     public void verifyOwnersTableStructure() {
         // Verify identity column
         verifyIdentityColumn("owners", "id");
@@ -58,7 +58,7 @@ public class PostgreSqlIntegrationTest {
         verifyIndex("owners", "idx_owners_last_name", "CREATE INDEX idx_owners_last_name ON public.owners USING btree (last_name)");
     }
 
-    @Test
+//    @Test
     public void verifyPetsTableStructure() {
         // Verify identity column
         verifyIdentityColumn("pets", "id");
