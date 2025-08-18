@@ -25,3 +25,9 @@ ALTER TABLE vet_specialties
 
 ALTER TABLE vet_specialties
     ADD CONSTRAINT FK_VETSPE_ON_VET FOREIGN KEY (vet_id) REFERENCES vets (id);
+
+-- Add indexes for better query performance
+CREATE INDEX idx_vets_last_name ON vets (last_name);
+CREATE INDEX idx_specialties_name ON specialties (name);
+CREATE INDEX idx_vet_specialties_vet_id ON vet_specialties (vet_id);
+CREATE INDEX idx_vet_specialties_specialty_id ON vet_specialties (specialty_id);

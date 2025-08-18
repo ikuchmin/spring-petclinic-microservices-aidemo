@@ -6,7 +6,7 @@ spring:
   profiles:
     active: production
   config:
-    import: "optional:configserver:",optional:classpath:/creds.yaml
+    import: "optional:configserver:"
   cloud:
     config:
       enabled: false
