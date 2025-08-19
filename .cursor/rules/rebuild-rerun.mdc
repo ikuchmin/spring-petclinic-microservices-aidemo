@@ -1,0 +1,4 @@
+---
+alwaysApply: true
+---
+If you wanna rerun or rebuild some service do it only by using rebuild-and-run.sh. Do not use any other methods commands etc.
