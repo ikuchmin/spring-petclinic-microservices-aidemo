@@ -3,7 +3,7 @@
 CREATE TABLE visits (
     id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT,
     pet_id INT(4) UNSIGNED NOT NULL,
-    visit_date DATE,
+    visit_date TIMESTAMP,
     description VARCHAR(8192),
     CONSTRAINT pk_visits PRIMARY KEY (id)
 ) ENGINE=InnoDB;

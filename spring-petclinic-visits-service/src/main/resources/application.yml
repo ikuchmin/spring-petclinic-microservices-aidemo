@@ -54,7 +54,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-database: postgres
+database: postgresql
 
 ---
 spring:
@@ -88,4 +88,4 @@ spring:
       schema-locations: classpath*:db/hsqldb/schema.sql
       data-locations: classpath*:db/hsqldb/data.sql
 
-database: hsql
+database: hsqldb
