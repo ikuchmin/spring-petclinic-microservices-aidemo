@@ -68,6 +68,62 @@ If you experience issues with running the system via docker-compose you can try 
 
 Each of the java based applications is started with the `chaos-monkey` profile in order to interact with Spring Boot Chaos Monkey. You can check out the (README)[scripts/chaos/README.md] for more information about how to use the `./scripts/chaos/call_chaos.sh` helper script to enable assaults.
 
+## Quick Rebuild and Restart Scripts
+
+For development convenience, we provide several scripts to quickly rebuild and manage the microservices:
+
+### rebuild-and-run.sh
+A comprehensive script that rebuilds service images and manages the Docker Compose environment. Can operate on all services or specific individual services:
+
+```bash
+# Stop and restart all services (default behavior)
+./scripts/rebuild-and-run.sh
+
+# Show all available options
+./scripts/rebuild-and-run.sh -h
+
+# List all available services
+./scripts/rebuild-and-run.sh -l
+
+# Build all service images
+./scripts/rebuild-and-run.sh -b
+
+# Build specific service images
+./scripts/rebuild-and-run.sh -b customers-service
+./scripts/rebuild-and-run.sh -b api-gateway config-server
+
+# Stop all services
+./scripts/rebuild-and-run.sh -d
+
+# Stop specific services
+./scripts/rebuild-and-run.sh -d api-gateway
+
+# Start all services
+./scripts/rebuild-and-run.sh -u
+
+# Start specific services
+./scripts/rebuild-and-run.sh -u config-server customers-service
+
+# Rebuild all services
+./scripts/rebuild-and-run.sh -r
+
+# Clean build and restart all services
+./scripts/rebuild-and-run.sh -c
+
+# Rebuild specific services with clean
+./scripts/rebuild-and-run.sh -r -c customers-service
+```
+
+### rebuild.sh
+A simple alias script for quick restart:
+
+```bash
+# Quick restart (same as rebuild-and-run.sh without arguments)
+./scripts/rebuild.sh
+```
+
+These scripts use the Maven wrapper and attempt to use Spring Boot's `build-image` goal for optimal Docker image creation. See [scripts/README.md](scripts/README.md) for detailed documentation.
+
 ## Understanding the Spring Petclinic application
 
 [See the presentation of the Spring Petclinic Framework version](http://fr.slideshare.net/AntoineRey/spring-framework-petclinic-sample-application)
