@@ -1,0 +1,44 @@
+csi:
+  TW_API_SECRET: "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjFrYnhacFJNQGJSI0tSbE1xS1lqIn0.eyJ1c2VyIjoiankzNzEwNCIsInR5cGUiOiJhcGlfa2V5IiwiYXBpX2tleV9pZCI6IjJiMDAwOTc5LTdlZDktNDhhYS05NzEzLTczNmQ1MGIxMDM1YiIsImlhdCI6MTc1NjQ3ODA1Mn0.ND-4Sx8WYMrqbdd0zybhGReSgnRBOdt6ypHwD94b5dAhfq65fjeDGkygr8XLGg-5Amz0kznpq88545QFvH21u-ccoIGIXRb9tyI3LTgZs4ZXDrAtWbyxUNMoFQiQGbLhvnkd2ha72OLh1IDECafj8f9YukddTjp3JSP1VssaHDuhD6IVZ8c6HSh09txdaSpcDv-Z3RkARxpL_l9hwKq4HL96ylO3LzNQI2eX9dS5_5tUgCLc9Kohm48KCIMxuTIgLR4ZWwORnVyPOu-sCiRW8X6AMc2wQWNNE5bg4EaI6W-L3akslR5oUsj7oJvykCKssnTP3yw-C1EXaDQ49se7Izv8su7A9D1kjEjTyiNBVnLBkHHqM1ZcMkPpM6Li-nr5Lohr56twqZ5cbGvai8LMTNCybnK4BUfurO_tPR-SVQm29xCUi2dRGHMq8-M85hV0pFB1w_n9yCiENWUSF35Py4zUeqRS0WnJI273m1UIjenxC5SG6emQaY1P-f0eMgBN"
+  TW_CLUSTER_ID: "1049587"
+
+  provisionerName: network-drives.csi.timeweb.cloud
+  # plugin container image options
+  image:
+    # image name
+    repository: registry-tw-csi.twc1.net/csi-driver/driver
+    # image tag
+    tag: latest
+    # image pull policy
+    pullPolicy: Always
+
+  # Node service options
+  node:
+    # node service log level
+    logLevel: debug
+    # force logs as json
+    logJson: true
+
+  # Controller service options
+  controller:
+    # controller replica count
+    replicas: 1
+
+    # controller node selector
+    nodeSelector: {}
+
+    # controller toleration options
+    tolerations: []
+
+  # RBAC options
+  rbac:
+    createRoles: true
+    createServiceAccounts: true
+
+  # metrics options
+  metrics:
+    podMonitor:
+      enabled: false
+      port: metrics
+      path: /metrics
+      interval: 60s

@@ -1,0 +1,5 @@
+postgresql:
+  enabled: true
+  fullnameOverride: postgresql
+  auth:
+    enablePostgresUser: false

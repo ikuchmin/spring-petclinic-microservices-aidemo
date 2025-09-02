@@ -1,0 +1,6 @@
+dependencies:
+- name: csi-driver-timeweb-cloud
+  repository: oci://registry-tw-csi.twc1.net/csi-driver
+  version: 1.0.0
+digest: sha256:5d0c30f66c75328a234ca268525ce6b72b45708fe0afb2ecf0ebe758d6274852
+generated: "2025-03-31T19:56:47.518979+04:00"
