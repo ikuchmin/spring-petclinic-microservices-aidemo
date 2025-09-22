@@ -3,8 +3,13 @@ services:
     image: spring-petclinic-config-server:3.4.1
     container_name: config-server
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery,git
+      - SPRING_PROFILES_ACTIVE=discovery,git,health
       - SPRING_CLOUD_CONSUL_HOST=consul
+      - ENCRYPT_KEYSTORE_LOCATION=/keystore/keystore.p12
+      - ENCRYPT_KEYSTORE_ALIAS=compose
+      - ENCRYPT_KEYSTORE_PASSWORD=w6egf6QA4hhjs7DHV_Py
+    volumes:
+      - ./docker/config-server/keystore:/workspace/keystore
     deploy:
       resources:
         limits:
