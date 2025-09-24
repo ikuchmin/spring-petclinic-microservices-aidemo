@@ -1,0 +1,9 @@
+dependencies:
+- name: eck-stack
+  repository: https://helm.elastic.co
+  version: 0.14.1
+- name: fluent-bit
+  repository: https://fluent.github.io/helm-charts
+  version: 0.48.9
+digest: sha256:249370ecf7e43e8d84bac4cab4c19efecf02dba90461127faa26fb245fa809e3
+generated: "2025-04-09T14:52:56.629225+04:00"

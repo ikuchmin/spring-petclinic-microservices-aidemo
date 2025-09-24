@@ -1,0 +1,10 @@
+ingress-nginx:
+  enabled: true
+  controller:
+    publishService:
+      enabled: true
+    metrics:
+      serviceMonitor:
+        enabled: true
+
+

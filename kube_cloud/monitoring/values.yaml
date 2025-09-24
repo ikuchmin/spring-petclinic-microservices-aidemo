@@ -1,0 +1,24 @@
+kube-prometheus-stack:
+  grafana:
+    ingress:
+      enabled: true
+      ingressClassName: "nginx"
+      hosts:
+        - grafana.localhost
+    adminPassword: paSSw0rd
+    sidecar:
+      dashboards:
+        enabled: true
+      datasources:
+        enabled: true
+  prometheus:
+#    ingress:
+#      enabled: true
+#      className: "nginx"
+#      ingressClassName: "nginx"
+#      hosts:
+#        - prometheus.localhost
+    prometheusSpec:
+      serviceMonitorSelector: {}
+      serviceMonitorSelectorNilUsesHelmValues: false
+      serviceMonitorNamespaceSelector: {}

@@ -1,0 +1,73 @@
+eck-stack:
+  eck-elasticsearch:
+    http:
+      service:
+        spec:
+          type: LoadBalancer
+      tls:
+        selfSignedCertificate:
+          disabled: true
+  eck-kibana:
+    config:
+      server:
+        publicBaseUrl: "http://kibana.localhost"
+    http:
+      service:
+        spec:
+          type: LoadBalancer
+      tls:
+        selfSignedCertificate:
+          disabled: true
+    ingress:
+      enabled: true
+      className: "nginx"
+      hosts:
+        - host: kibana.localhost
+          path: /
+    nodeSets:
+      - name: default
+        count: 1
+        config:
+          node.store.allow_mmap: false
+fluent-bit:
+  enabled: true
+  config:
+    outputs: |
+      [OUTPUT]
+          Name es
+          Match kube.*
+          Host elasticsearch-es-http
+          HTTP_User ${ES_USER}
+          HTTP_Passwd ${ES_PASSWORD}
+          Retry_Limit False
+          Suppress_Type_Name On
+          Trace_Error On
+          Replace_Dots On
+      
+      [OUTPUT]
+          Name es
+          Match host.*
+          Host elasticsearch-es-http
+          HTTP_User ${ES_USER}
+          HTTP_Passwd ${ES_PASSWORD}
+          Retry_Limit False
+          Suppress_Type_Name On
+          Trace_Error On
+          Replace_Dots On
+    customParsers: |
+      [PARSER]
+          Name spring-boot
+          Format regex
+          Regex       ^(?<time>\S+)\s+(?<level>\S+)\s+(?<pid>\d+)[^\[]+\[(?<application>[^]]+)\]\s+\[\s*(?<thread>[^]]+)\]\s+(?<class>\S+)\s+:\s*(?<message>.*)$
+          Time_Key    time
+          Time_Format %Y-%m-%dT%H:%M:%S.%L%z
+          Time_Keep   On
+          Types pid:integer
+  env:
+    - name: ES_USER
+      value: elastic
+    - name: ES_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: elasticsearch-es-elastic-user
+          key: elastic

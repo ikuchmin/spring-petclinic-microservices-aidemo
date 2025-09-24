@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: {{ include "app.fullname" . }}-le-staging
+  labels:
+    {{- include "app.labels" . | nindent 4 }}
+spec:
+  acme:
+    server: {{ .Values.letsencrypt.staging.server }}
+    email: {{ .Values.letsencrypt.staging.email }}
+    privateKeySecretRef:
+      name: {{ include "app.fullname" . }}-le-staging
+    solvers:
+      - http01:
+          ingress:
+            ingressClassName: {{ .Values.letsencrypt.ingressClassName }}
