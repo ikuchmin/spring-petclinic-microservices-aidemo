@@ -24,6 +24,12 @@ spring:
         service-name: ${spring.application.name}
         instance-id: ${spring.application.name}:${random.uuid}
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
 ---
 spring:
   config:

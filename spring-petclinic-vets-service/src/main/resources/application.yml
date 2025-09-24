@@ -27,6 +27,15 @@ spring:
       discovery:
         service-name: ${spring.application.name}
         instance-id: ${spring.application.name}:${random.uuid}
+        heartbeat:
+          enabled: true
+        health-check-critical-timeout: 5m
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
 
 ---
 spring:
