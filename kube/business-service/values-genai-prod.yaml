@@ -1,0 +1,5 @@
+nameOverride: genai-service
+
+profiles: "discovery, cloudconfig"
+image:
+  repository: spring-petclinic-genai-service

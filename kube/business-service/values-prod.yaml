@@ -1,0 +1,9 @@
+profiles: "postgres, cloudconfig, discovery"
+
+image:
+  tag: "3.4.1"
+
+spring:
+  cloud:
+    consul:
+      host: "consul-headless"

@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="postgresql" type="amplicode-helm" factoryName="amplicode-helm">
+    <option name="chart" value="../spring-petclinic-microservices-aidemo/kube/postgresql" />
+    <option name="context" value="rancher-desktop" />
+    <option name="kubeconfig" value="$USER_HOME$/.kube/config" />
+    <option name="namespace" value="petclinic" />
+    <option name="release_name" value="postgresql" />
+    <method v="2" />
+  </configuration>
+</component>

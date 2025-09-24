@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="genai-service" type="amplicode-helm" factoryName="amplicode-helm">
+    <option name="chart" value="../spring-petclinic-microservices-aidemo/kube/business-service" />
+    <option name="context" value="rancher-desktop" />
+    <option name="kubeconfig" value="$USER_HOME$/.kube/config" />
+    <option name="namespace" value="petclinic" />
+    <option name="release_name" value="genai-service" />
+    <option name="values_files">
+      <list>
+        <option value="$PROJECT_DIR$/kube/business-service/values-prod.yaml" />
+        <option value="$PROJECT_DIR$/kube/business-service/values-genai-prod.yaml" />
+      </list>
+    </option>
+    <method v="2" />
+  </configuration>
+</component>

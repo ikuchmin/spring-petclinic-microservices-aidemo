@@ -1,0 +1,11 @@
+image:
+  tag: "3.4.1"
+
+profiles: "cloudconfig, discovery"
+
+spring:
+  cloud:
+    consul:
+      host: "consul-headless"
+      discovery:
+        preferIpAddress: true

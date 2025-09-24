@@ -1,0 +1,26 @@
+replicaCount: 2
+
+profiles: "git, discovery"
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitflic.ru/project/ikuchmin/spring-petclinic-microservices-config.git
+          defaultLabel: aidemo
+          searchPaths: /production
+    consul:
+      host: consul-headless
+
+keystore:
+  filePath: "keystore/prod.p12"
+
+encrypt:
+  keystore:
+    alias: "prod"
+    password:
+      valueFrom:
+        secretKeyRef:
+          name:  "config-server-keystore-password"
+          key: keystore-password
