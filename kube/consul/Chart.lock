@@ -1,6 +1,0 @@
-dependencies:
-- name: consul
-  repository: oci://registry-1.docker.io/bitnamicharts
-  version: 11.4.32
-digest: sha256:82331ea2326be1e9f54b6f310222668ee9a886193124372f4d8b023f5891f0e1
-generated: "2025-08-29T13:28:21.008309646+03:00"

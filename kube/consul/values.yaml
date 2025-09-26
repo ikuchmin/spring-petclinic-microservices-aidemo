@@ -1,3 +1,0 @@
-consul:
-  enabled: true
-  replicaCount: 3
