@@ -10,6 +10,11 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
+    kubernetes:
+      discovery:
+        enabled: false
+        namespaces:
+          - default
     gateway:
       default-filters:
         - name: CircuitBreaker
@@ -72,9 +77,19 @@ spring:
 spring:
   config:
     activate:
-      on-profile: discovery
+      on-profile: consul
   cloud:
     consul:
       enabled: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: kubernetes
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
 
 
