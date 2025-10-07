@@ -38,13 +38,16 @@ services:
      - 8500:8500
 
   customers-service:
-    image: spring-petclinic-customers-service:3.4.1
+    image: spring-petclinic-customers-service:3.4.1-df
     container_name: customers-service
     environment:
 #      - SPRING_PROFILES_ACTIVE=discovery,postgres
       - SPRING_PROFILES_ACTIVE=discovery,cloudconfig,postgres
+      - SPRING_PROFILES_ACTIVE=postgres,kubernetes,trace
       - SPRING_CLOUD_CONSUL_HOST=consul
       - SPRING_DATASOURCE_URL=jdbc:postgresql://customers-postgresql:5432/petclinic
+      - JAVA_DEBUG_OPTS=
+      - JAVA_FLIGHT_RECORDING_OPTS=
     deploy:
       resources:
         limits:
@@ -57,7 +60,8 @@ services:
       customers-postgresql:
         condition: service_healthy
     ports:
-    - 8081:8081
+#      - 8081:8081
+      - "8081:8080"
 
   customers-postgresql:
     image: postgres:17.6

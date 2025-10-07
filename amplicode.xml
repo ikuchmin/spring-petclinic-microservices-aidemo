@@ -3,11 +3,6 @@
   <component name="AmplicodeDatabaseMigrationSettings" lastIdType="Integer" lastGeneratedStrategy="IDENTITY" />
   <component name="AmplicodePersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit moduleName="spring-petclinic-customers-service" name="Default">
-        <packages>
-          <package value="org.springframework.samples.petclinic.customers" />
-        </packages>
-      </persistence-unit>
       <persistence-unit moduleName="spring-petclinic-genai-service" name="Default">
         <packages>
           <package value="org.springframework.samples.petclinic.genai" />
@@ -21,6 +16,11 @@
       <persistence-unit moduleName="spring-petclinic-visits-service" name="Default">
         <packages>
           <package value="org.springframework.samples.petclinic.visits" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="spring-petclinic-customers-service" name="Default">
+        <packages>
+          <package value="org.springframework.samples.petclinic.customers" />
         </packages>
       </persistence-unit>
     </persistence-units>

@@ -73,6 +73,14 @@ spec:
               value: "TRACE"
             - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD_GATEWAY_FILTER_ROUNDROBIN
               value: "TRACE"
+            - name: SPRING_CLOUD_KUBERNETES_LOADBALANCER_MODE
+              value: "POD"
+{{/*            - name: SPRING_CLOUD_KUBERNETES_LOADBALANCER_PORT_NAME*/}}
+{{/*              value: "http"*/}}
+{{/*            - name: SPRING_CLOUD_KUBERNETES_LOADBALANCER_CLUSTER_DOMAIN*/}}
+{{/*              value: "cluster.local"*/}}
+{{/*            - name: SPRING_CLOUD_KUBERNETES_DISCOVERY_PRIMARY_PORT_NAME*/}}
+{{/*              value: "http"*/}}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

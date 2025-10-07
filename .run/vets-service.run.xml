@@ -8,7 +8,7 @@
     <option name="values_files">
       <list>
         <option value="$PROJECT_DIR$/kube/business-service/values-prod.yaml" />
-        <option value="$PROJECT_DIR$/kube/business-service/values-vets-prod.yaml" />
+        <option value="$PROJECT_DIR$/kube/business-service/values-prod-vet-service.yaml" />
       </list>
     </option>
     <method v="2" />
