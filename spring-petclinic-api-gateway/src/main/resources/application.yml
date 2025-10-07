@@ -10,11 +10,6 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
-    kubernetes:
-      discovery:
-        enabled: false
-        namespaces:
-          - default
     gateway:
       default-filters:
         - name: CircuitBreaker
@@ -57,6 +52,11 @@ spring:
       discovery:
         service-name: ${spring.application.name}
         instance-id: ${spring.application.name}:${random.uuid}
+    kubernetes:
+      discovery:
+        enabled: false
+        namespaces:
+          - default
 
 management:
   endpoints:
