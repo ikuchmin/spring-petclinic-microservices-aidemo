@@ -1,0 +1,4 @@
+image:
+  tag: "3.4.1-df"
+
+profiles: "postgres,cloudconfig,kubernetes"
