@@ -1,0 +1,2 @@
+org.springframework.boot.BootstrapRegistryInitializer=\
+org.springframework.samples.petclinic.api.SimpleDiscoveryConfigServerBootstrapConfiguration

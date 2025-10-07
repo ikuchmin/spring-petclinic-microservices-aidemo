@@ -92,4 +92,19 @@ spring:
       discovery:
         enabled: true
 
+---
+spring:
+  config:
+    activate:
+      on-profile: static-discovery
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            config-server:
+              - uri: http://config-server.petclinic.svc.cluster.local:8888
+            customers-service:
+              - uri: http://customers-service.petclinic.svc.cluster.local:8080
+
 

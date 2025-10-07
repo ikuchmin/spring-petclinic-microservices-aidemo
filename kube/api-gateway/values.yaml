@@ -14,7 +14,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-profiles: "cloudconfig,kubernetes"
+profiles: "cloudconfig,kubernetes,static-discovery"
 
 serviceAccount:
   # Specifies whether a service account should be created
