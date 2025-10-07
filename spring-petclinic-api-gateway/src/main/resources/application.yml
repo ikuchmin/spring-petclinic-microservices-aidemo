@@ -82,4 +82,14 @@ spring:
     consul:
       enabled: true
 
+---
+spring:
+  config:
+    activate:
+      on-profile: kubernetes
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+
 
