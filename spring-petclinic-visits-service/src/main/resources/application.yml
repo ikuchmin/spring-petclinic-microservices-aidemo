@@ -23,6 +23,11 @@ spring:
       discovery:
         service-name: ${spring.application.name}
         instance-id: ${spring.application.name}:${random.uuid}
+    kubernetes:
+      discovery:
+        enabled: false
+        namespaces:
+          - default
 
 management:
   endpoints:
@@ -43,10 +48,20 @@ spring:
 spring:
   config:
     activate:
-      on-profile: discovery
+      on-profile: consul
   cloud:
     consul:
       enabled: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: kubernetes
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
 
 ---
 spring:
