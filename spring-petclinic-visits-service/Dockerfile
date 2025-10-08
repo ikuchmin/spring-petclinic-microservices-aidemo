@@ -30,6 +30,8 @@ ENV JAVA_JMX_REMOTE_OPTS="-Djava.rmi.server.hostname=127.0.0.1 \
     -Dcom.sun.management.jmxremote.port=5005 \
     -Dcom.sun.management.jmxremote.rmi.port=5005"
 
+ENV JAVA_DEBUG_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005"
+
 ENTRYPOINT java \
     $JAVA_HEAP_DUMP_OPTS \
     $JAVA_ON_OUT_OF_MEMORY_OPTS \
@@ -39,4 +41,5 @@ ENTRYPOINT java \
     $JAVA_FLIGHT_RECORDING_OPTS \
     $JAVA_JMX_REMOTE_OPTS \
     $JAVA_CDS_OPTS \
+    $JAVA_DEBUG_OPTS \
     -jar app.jar

@@ -23,6 +23,8 @@ import io.micrometer.core.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.samples.petclinic.visits.client.PetDetails;
+import org.springframework.samples.petclinic.visits.client.PetServiceClient;
 import org.springframework.samples.petclinic.visits.model.Visit;
 import org.springframework.samples.petclinic.visits.model.VisitRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,16 +50,24 @@ class VisitResource {
     private static final Logger log = LoggerFactory.getLogger(VisitResource.class);
 
     private final VisitRepository visitRepository;
+    private final PetServiceClient petServiceClient;
 
-    VisitResource(VisitRepository visitRepository) {
+    VisitResource(VisitRepository visitRepository, PetServiceClient petServiceClient) {
         this.visitRepository = visitRepository;
+        this.petServiceClient = petServiceClient;
     }
 
-    @PostMapping("owners/*/pets/{petId}/visits")
+    @PostMapping("owners/{ownerId}/pets/{petId}/visits")
     @ResponseStatus(HttpStatus.CREATED)
     public Visit create(
         @Valid @RequestBody Visit visit,
+        @PathVariable("ownerId") @Min(1) int ownerId,
         @PathVariable("petId") @Min(1) int petId) {
+
+        PetDetails petDetails = petServiceClient.getPetById(ownerId, petId);
+        if (petDetails == null) {
+            throw new IllegalArgumentException("Pet with id " + petId + " not found");
+        }
 
         visit.setPetId(petId);
         log.info("Saving visit {}", visit);
