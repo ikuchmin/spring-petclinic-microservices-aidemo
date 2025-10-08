@@ -106,5 +106,7 @@ spring:
               - uri: http://config-server.petclinic.svc.cluster.local:8888
             customers-service:
               - uri: http://customers-service.petclinic.svc.cluster.local:8080
+            visits-service:
+              - uri: http://visits-service.petclinic.svc.cluster.local:8080
 
 

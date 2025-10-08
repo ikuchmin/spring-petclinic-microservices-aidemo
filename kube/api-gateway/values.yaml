@@ -147,3 +147,5 @@ metrics:
     jobLabel: ""
     interval: 15s
     scrapeTimeout: ""
+cm:
+  enabled: false
