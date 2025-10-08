@@ -1,0 +1,11 @@
+nameOverride: ""
+fullnameOverride: ""
+postgresql:
+  enabled: true
+  fullnameOverride: postgresql
+  auth:
+    enablePostgresUser: false
+
+dbs:
+  pc_visits:
+    password: "JCi9uZd7DlV9Vsu"
