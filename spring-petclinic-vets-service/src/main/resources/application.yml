@@ -5,7 +5,7 @@ spring:
     import: "optional:configserver:"
   flyway:
     enabled: true
-    locations: classpath:db/migration/schema/common,classpath:db/migration/schema/${database},classpath:db/migration/data
+    locations: classpath:db/migration/common,classpath:db/migration/${database}
     validate-on-migrate: true
     out-of-order: true
   jpa:
@@ -30,11 +30,10 @@ spring:
         heartbeat:
           enabled: true
         health-check-critical-timeout: 5m
-    kubernetes:
-      discovery:
-        enabled: false
-        namespaces:
-          - default
+  sql:
+    init:
+      data-locations: classpath*:db/data/${database}/data.sql
+      mode: always
 
 management:
   endpoints:
@@ -60,17 +59,6 @@ spring:
   cloud:
     consul:
       enabled: true
-
----
-spring:
-  config:
-    activate:
-      on-profile: kubernetes
-  cloud:
-    kubernetes:
-      discovery:
-        enabled: true
-
 
 ---
 spring:

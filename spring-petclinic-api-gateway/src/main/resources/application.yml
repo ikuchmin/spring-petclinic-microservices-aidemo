@@ -52,11 +52,6 @@ spring:
       discovery:
         service-name: ${spring.application.name}
         instance-id: ${spring.application.name}:${random.uuid}
-    kubernetes:
-      discovery:
-        enabled: false
-        namespaces:
-          - default
 
 management:
   endpoints:
@@ -81,32 +76,4 @@ spring:
   cloud:
     consul:
       enabled: true
-
----
-spring:
-  config:
-    activate:
-      on-profile: kubernetes
-  cloud:
-    kubernetes:
-      discovery:
-        enabled: true
-
----
-spring:
-  config:
-    activate:
-      on-profile: static-discovery
-  cloud:
-    discovery:
-      client:
-        simple:
-          instances:
-            config-server:
-              - uri: http://config-server.petclinic.svc.cluster.local:8888
-            customers-service:
-              - uri: http://customers-service.petclinic.svc.cluster.local:8080
-            visits-service:
-              - uri: http://visits-service.petclinic.svc.cluster.local:8080
-
 

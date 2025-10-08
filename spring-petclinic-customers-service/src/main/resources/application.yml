@@ -22,11 +22,7 @@ spring:
         enabled: false
         service-name: ${spring.application.name}
         instance-id: ${spring.application.name}:${random.uuid}
-    kubernetes:
-      discovery:
-        enabled: false
-        namespaces:
-          - petclinic
+
   sql:
     init:
       data-locations: classpath*:db/data/${database}/data.sql
@@ -37,13 +33,7 @@ management:
     web:
       exposure:
         include: health,info,prometheus
-logging:
-  level:
-    org:
-      springframework:
-        boot:
-          sql:
-            init: TRACE
+
 ---
 spring:
   config:
@@ -52,16 +42,6 @@ spring:
   cloud:
     consul:
       enabled: true
-      discovery:
-        enabled: true
-
----
-spring:
-  config:
-    activate:
-      on-profile: kubernetes
-  cloud:
-    kubernetes:
       discovery:
         enabled: true
 

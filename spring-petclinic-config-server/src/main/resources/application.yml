@@ -27,7 +27,7 @@ management:
 spring:
   config:
     activate:
-      on-profile: discovery
+      on-profile: consul
   cloud:
     consul:
       enabled: true

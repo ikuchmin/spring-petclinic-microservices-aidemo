@@ -1,0 +1,10 @@
+INSERT INTO visits (id, pet_id, visit_date, description) VALUES (1, 7, '2013-01-01', 'rabies shot');
+INSERT INTO visits (id, pet_id, visit_date, description) VALUES (2, 8, '2013-01-02', 'rabies shot');
+INSERT INTO visits (id, pet_id, visit_date, description) VALUES (3, 8, '2013-01-03', 'neutered');
+INSERT INTO visits (id, pet_id, visit_date, description) VALUES (4, 7, '2013-01-04', 'spayed');
+INSERT INTO visits (id, pet_id, visit_date, description) VALUES (5, 1, '2013-01-05', 'annual checkup');
+INSERT INTO visits (id, pet_id, visit_date, description) VALUES (6, 2, '2013-01-06', 'vaccination');
+INSERT INTO visits (id, pet_id, visit_date, description) VALUES (7, 3, '2013-01-07', 'dental cleaning');
+INSERT INTO visits (id, pet_id, visit_date, description) VALUES (8, 4, '2013-01-08', 'flea treatment');
+INSERT INTO visits (id, pet_id, visit_date, description) VALUES (9, 5, '2013-01-09', 'nail trimming');
+INSERT INTO visits (id, pet_id, visit_date, description) VALUES (10, 6, '2013-01-10', 'ear cleaning');
