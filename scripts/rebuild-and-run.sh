@@ -20,7 +20,6 @@ ALL_SERVICES=(
     "spring-petclinic-visits-service"
     "spring-petclinic-genai-service"
     "spring-petclinic-api-gateway"
-    "spring-petclinic-admin-server"
 )
 
 # Function to print colored output

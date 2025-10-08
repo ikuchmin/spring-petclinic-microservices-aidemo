@@ -3,7 +3,7 @@ services:
     image: spring-petclinic-config-server:3.4.1
     container_name: config-server
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery,git
+      - SPRING_PROFILES_ACTIVE=consul,git
       - SPRING_CLOUD_CONSUL_HOST=consul
       - ENCRYPT_KEYSTORE_LOCATION=/keystore/keystore.p12
       - ENCRYPT_KEYSTORE_ALIAS=compose
@@ -38,11 +38,11 @@ services:
      - 8500:8500
 
   customers-service:
-    image: spring-petclinic-customers-service:3.4.1-df
+    image: spring-petclinic-customers-service:3.4.1
     container_name: customers-service
     environment:
-#      - SPRING_PROFILES_ACTIVE=discovery,postgres
-      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig,postgres
+#      - SPRING_PROFILES_ACTIVE=consul,postgres
+      - SPRING_PROFILES_ACTIVE=consul,cloudconfig,postgres
       - SPRING_PROFILES_ACTIVE=postgres,kubernetes,trace
       - SPRING_CLOUD_CONSUL_HOST=consul
       - SPRING_DATASOURCE_URL=jdbc:postgresql://customers-postgresql:5432/petclinic
@@ -85,7 +85,7 @@ services:
     image: spring-petclinic-visits-service:3.4.1
     container_name: visits-service
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig,postgres
+      - SPRING_PROFILES_ACTIVE=consul,cloudconfig,postgres
       - SPRING_CLOUD_CONSUL_HOST=consul
       - SPRING_DATASOURCE_URL=jdbc:postgresql://visits-postgresql:5432/petclinic
     deploy:
@@ -122,7 +122,7 @@ services:
     image: spring-petclinic-vets-service:3.4.1
     container_name: vets-service
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig,postgres
+      - SPRING_PROFILES_ACTIVE=consul,cloudconfig,postgres
       - SPRING_CLOUD_CONSUL_HOST=consul
       - SPRING_DATASOURCE_URL=jdbc:postgresql://vets-postgresql:5432/petclinic
     deploy:
@@ -159,7 +159,7 @@ services:
     image: spring-petclinic-genai-service:3.4.1
     container_name: genai-service
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
+      - SPRING_PROFILES_ACTIVE=consul,cloudconfig
       - SPRING_CLOUD_CONSUL_HOST=consul
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - AZURE_OPENAI_KEY=${AZURE_OPENAI_KEY}
@@ -181,7 +181,7 @@ services:
     image: spring-petclinic-api-gateway:3.4.1
     container_name: api-gateway
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
+      - SPRING_PROFILES_ACTIVE=consul,cloudconfig
       - SPRING_CLOUD_CONSUL_HOST=consul
     deploy:
       resources:
@@ -209,7 +209,7 @@ services:
     image: spring-petclinic-admin-server:3.4.1
     container_name: admin-server
     environment:
-      - SPRING_PROFILES_ACTIVE=discovery,cloudconfig
+      - SPRING_PROFILES_ACTIVE=consul,cloudconfig
       - SPRING_CLOUD_CONSUL_HOST=consul
     deploy:
       resources:
