@@ -9,8 +9,8 @@ INSERT INTO specialties(id, name) VALUES (1, 'radiology') ON CONFLICT (id) DO NO
 INSERT INTO specialties(id, name) VALUES (2, 'surgery') ON CONFLICT (id) DO NOTHING;
 INSERT INTO specialties(id, name) VALUES (3, 'dentistry') ON CONFLICT (id) DO NOTHING;
 
-INSERT INTO vet_specialties(vet_id, specialty_id)  VALUES (2, 1) ON CONFLICT (id) DO NOTHING;
-INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (3, 2) ON CONFLICT (id) DO NOTHING;
-INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (3, 3) ON CONFLICT (id) DO NOTHING;
-INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (4, 2) ON CONFLICT (id) DO NOTHING;
-INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (5, 1) ON CONFLICT (id) DO NOTHING;
+INSERT INTO vet_specialties(vet_id, specialty_id)  VALUES (2, 1) ON CONFLICT (vet_id, specialty_id) DO NOTHING;
+INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (3, 2) ON CONFLICT (vet_id, specialty_id) DO NOTHING;
+INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (3, 3) ON CONFLICT (vet_id, specialty_id) DO NOTHING;
+INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (4, 2) ON CONFLICT (vet_id, specialty_id) DO NOTHING;
+INSERT INTO vet_specialties(vet_id, specialty_id) VALUES (5, 1) ON CONFLICT (vet_id, specialty_id) DO NOTHING;
