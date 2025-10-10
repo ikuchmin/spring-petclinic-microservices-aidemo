@@ -34,6 +34,11 @@ management:
       exposure:
         include: health,info,prometheus
 
+petBase:
+  api:
+    base-url: https://test.api.petbase.eu
+    bearer-token: ""
+
 ---
 spring:
   config:

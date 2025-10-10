@@ -20,6 +20,8 @@ import jakarta.validation.constraints.Min;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.samples.petclinic.customers.client.PetBaseInfo;
+import org.springframework.samples.petclinic.customers.client.PetBaseServiceClient;
 import org.springframework.samples.petclinic.customers.model.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,9 +43,13 @@ class PetResource {
     private final PetRepository petRepository;
     private final OwnerRepository ownerRepository;
 
-    PetResource(PetRepository petRepository, OwnerRepository ownerRepository) {
+    private final PetBaseServiceClient petBaseServiceClient;
+
+    PetResource(PetRepository petRepository, OwnerRepository ownerRepository,
+                PetBaseServiceClient petBaseServiceClient) {
         this.petRepository = petRepository;
         this.ownerRepository = ownerRepository;
+        this.petBaseServiceClient = petBaseServiceClient;
     }
 
     @GetMapping("/petTypes")
@@ -97,4 +103,8 @@ class PetResource {
             .orElseThrow(() -> new ResourceNotFoundException("Pet " + petId + " not found"));
     }
 
+    @GetMapping("owners/*/pets/by-chip")
+    public PetBaseInfo getPetInfoByChipId(@RequestParam String chipId) {
+        return petBaseServiceClient.getPetInfoByChipId(chipId);
+    }
 }
