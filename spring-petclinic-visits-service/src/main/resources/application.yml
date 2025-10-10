@@ -62,9 +62,9 @@ spring:
     activate:
       on-profile: postgres
   datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost:5432}/${POSTGRES_DB_NAME:petclinic}
-    username: ${POSTGRES_USERNAME:petclinic}
-    password: ${POSTGRES_PASSWORD:petclinic}
+    url: jdbc:postgresql://localhost:5432/petclinic
+    username: petclinic
+    password: petclinic
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
