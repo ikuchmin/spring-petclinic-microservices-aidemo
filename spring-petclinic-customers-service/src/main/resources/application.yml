@@ -14,7 +14,6 @@ spring:
       enabled: false
       fail-fast: true
       discovery:
-        enabled: true
         service-id: config-server
     consul:
       enabled: false
@@ -48,6 +47,9 @@ spring:
   cloud:
     consul:
       enabled: true
+      discovery:
+        enabled: true
+    config:
       discovery:
         enabled: true
 

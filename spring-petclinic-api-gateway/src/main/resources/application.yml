@@ -8,7 +8,6 @@ spring:
       enabled: false
       fail-fast: true
       discovery:
-        enabled: true
         service-id: config-server
     gateway:
       default-filters:
@@ -76,4 +75,7 @@ spring:
   cloud:
     consul:
       enabled: true
+    config:
+      discovery:
+        enabled: true
 
