@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "visits-service.fullname" . }}-discovery
+  labels:
+    {{- include "visits-service.labels" . | nindent 4 }}
+data:
+  application.yml: |
+    spring:
+      cloud:
+        discovery:
+          client:
+            simple:
+              instances:
+                customers-service:
+                  - uri: http://customers-service.petclinic:8080

@@ -1,0 +1,6 @@
+image:
+  tag: 3.4.1
+
+spring:
+  profiles:
+    active: kubernetes,cloudconfig

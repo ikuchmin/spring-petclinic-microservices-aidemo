@@ -1,0 +1,12 @@
+{{- if or (eq .Values.spring.profiles.active "kubernetes") (regexMatch "^(.*,)?kubernetes(,.*)?$" .Values.spring.profiles.active) }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "customers-service.fullname" . }}-discovery
+  labels:
+    {{- include "customers-service.labels" . | nindent 4 }}
+rules:
+  - apiGroups: [ "" ]
+    resources: [ "services", "endpoints", "pods" ]
+    verbs: [ "get", "list", "watch" ]
+{{- end }}

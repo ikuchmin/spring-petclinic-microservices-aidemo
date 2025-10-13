@@ -25,6 +25,9 @@ spring:
         heartbeat:
           enabled: true
         health-check-critical-timeout: 5m
+    kubernetes:
+      discovery:
+        enabled: false
   sql:
     init:
       data-locations: classpath*:db/data/${database}/data.sql
@@ -54,6 +57,19 @@ spring:
   cloud:
     consul:
       enabled: true
+    config:
+      discovery:
+        enabled: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: kubernetes
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
     config:
       discovery:
         enabled: true

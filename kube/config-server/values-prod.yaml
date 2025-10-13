@@ -1,0 +1,25 @@
+image:
+  tag: 3.4.1
+
+spring:
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitflic.ru/project/ikuchmin/spring-petclinic-microservices-config.git
+          defaultLabel: full3
+          searchPaths: /production
+
+encrypt:
+  keystore:
+    alias: prod
+    password:
+      valueFrom:
+        secretKeyRef:
+          name: config-server-keystore-password
+          key: password
+
+keystore:
+  filePath: keystore/prod.p12

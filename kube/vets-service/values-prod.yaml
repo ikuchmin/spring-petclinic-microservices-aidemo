@@ -1,0 +1,14 @@
+image:
+  tag: 3.4.1
+
+spring:
+  profiles:
+    active: postgres,cloudconfig,kubernetes
+  datasource:
+    url: jdbc:postgresql://postgresql:5432/pc_vet
+    username: pc_vet
+    password:
+      valueFrom:
+        secretKeyRef:
+          name: postgresql-pc-vet-password
+          key: password

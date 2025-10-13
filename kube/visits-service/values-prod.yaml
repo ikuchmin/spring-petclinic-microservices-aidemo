@@ -1,0 +1,17 @@
+image:
+  tag: 3.4.1
+
+spring:
+  profiles:
+    active: postgres,cloudconfig,kubernetes
+  cloud:
+    config:
+      uri: http://config-server.petclinic:8888
+  datasource:
+    url: jdbc:postgresql://postgresql:5432/pc_visit
+    username: pc_visit
+    password:
+      valueFrom:
+        secretKeyRef:
+          name: postgresql-pc-visit-password
+          key: password

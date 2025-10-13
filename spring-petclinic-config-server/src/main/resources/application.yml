@@ -22,7 +22,14 @@ management:
     web:
       exposure:
         include: health,info,prometheus
-        
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          config: TRACE
+
 ---
 spring:
   config:

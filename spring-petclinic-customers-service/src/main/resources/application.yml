@@ -21,7 +21,9 @@ spring:
         enabled: false
         service-name: ${spring.application.name}
         instance-id: ${spring.application.name}:${random.uuid}
-
+    kubernetes:
+      discovery:
+        enabled: false
   sql:
     init:
       data-locations: classpath*:db/data/${database}/data.sql
@@ -47,6 +49,19 @@ spring:
   cloud:
     consul:
       enabled: true
+      discovery:
+        enabled: true
+    config:
+      discovery:
+        enabled: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: kubernetes
+  cloud:
+    kubernetes:
       discovery:
         enabled: true
     config:

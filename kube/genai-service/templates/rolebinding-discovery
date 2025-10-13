@@ -1,0 +1,16 @@
+{{- if or (eq .Values.spring.profiles.active "kubernetes") (regexMatch "^(.*,)?kubernetes(,.*)?$" .Values.spring.profiles.active) }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "genai-service.fullname" . }}-discovery
+  labels:
+    {{- include "genai-service.labels" . | nindent 4 }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "genai-service.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: {{ include "genai-service.fullname" . }}-discovery
+  apiGroup: rbac.authorization.k8s.io
+  {{- end }}
